@@ -1,0 +1,29 @@
+<idea-plugin>
+    <id>me.artspb.idea.build.number.plugin</id>
+    <name>Build Number Status Bar Widget</name>
+    <vendor email="contact@artspb.me" url="https://artspb.me">Artem Khvastunov</vendor>
+
+    <description><![CDATA[
+        A simple plugin that brings IDEA's build number into a status bar.
+    ]]>
+    </description>
+
+    <change-notes><![CDATA[
+        <h3>1.0</h3>
+        <ul>
+          <li>Added a status bar widget.</li>
+        </ul>
+    ]]>
+    </change-notes>
+
+    <idea-version since-build="201.6251.9"/>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <statusBarWidgetFactory id="buildNumberWidget"
+                                implementation="me.artspb.idea.build.number.plugin.BuildNumberStatusWidgetFactory"
+                                order="after writeActionWidget"/>
+    </extensions>
+
+</idea-plugin>
