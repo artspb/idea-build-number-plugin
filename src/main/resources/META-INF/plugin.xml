@@ -5,25 +5,22 @@
 
     <description><![CDATA[
         A simple plugin that brings IDEA's build number into a status bar.
-    ]]>
-    </description>
+    ]]></description>
 
     <change-notes><![CDATA[
-        <h3>1.0</h3>
+        <h3>0.9</h3>
         <ul>
-          <li>Added a status bar widget.</li>
+          <li>Added support for versions from 2018.2 to 2019.3.</li>
         </ul>
     ]]>
     </change-notes>
 
-    <idea-version since-build="201.6251.9"/>
+    <idea-version since-build="182.2757.3"/>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <statusBarWidgetFactory id="buildNumberWidget"
-                                implementation="me.artspb.idea.build.number.plugin.BuildNumberStatusWidgetFactory"
-                                order="after writeActionWidget"/>
+        <statusBarWidgetProvider implementation="me.artspb.idea.build.number.plugin.BuildNumberStatusWidgetProvider"/>
     </extensions>
 
 </idea-plugin>
