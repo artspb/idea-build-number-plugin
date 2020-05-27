@@ -12,8 +12,7 @@
         <ul>
           <li>Added support for versions from 2018.2 to 2019.3.</li>
         </ul>
-    ]]>
-    </change-notes>
+    ]]></change-notes>
 
     <idea-version since-build="182.2757.3"/>
 
