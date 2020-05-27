@@ -5,16 +5,14 @@
 
     <description><![CDATA[
         A simple plugin that brings IDEA's build number into a status bar.
-    ]]>
-    </description>
+    ]]></description>
 
     <change-notes><![CDATA[
         <h3>1.0</h3>
         <ul>
           <li>Added a status bar widget.</li>
         </ul>
-    ]]>
-    </change-notes>
+    ]]></change-notes>
 
     <idea-version since-build="201.6251.9"/>
 
