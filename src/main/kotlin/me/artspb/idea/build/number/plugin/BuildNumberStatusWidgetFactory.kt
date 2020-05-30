@@ -1,5 +1,6 @@
 package me.artspb.idea.build.number.plugin
 
+import com.intellij.notification.*
 import com.intellij.openapi.application.ApplicationInfo
 import com.intellij.openapi.ide.CopyPasteManager
 import com.intellij.openapi.project.Project
@@ -43,6 +44,7 @@ class BuildNumberStatusWidgetFactory : StatusBarWidgetFactory {
             object : ClickListener() {
                 override fun onClick(event: MouseEvent, clickCount: Int): Boolean {
                     CopyPasteManager.getInstance().setContents(StringSelection(buildNumber))
+                    createAndShowNotification()
                     return true
                 }
             }.installOn(this, true)
@@ -57,5 +59,14 @@ class BuildNumberStatusWidgetFactory : StatusBarWidgetFactory {
         override fun getComponent(): JComponent = this
 
         override fun dispose() {}
+
+        private fun createAndShowNotification() {
+            val notificationGroup = NotificationGroup("BuildNumberPluginNotification",
+                    NotificationDisplayType.BALLOON)
+            Notifications.Bus.notify(Notification(notificationGroup.displayId,
+                    "Build Number Copied",
+                    "Build number was copied to clipboard",
+                    NotificationType.INFORMATION))
+        }
     }
 }
