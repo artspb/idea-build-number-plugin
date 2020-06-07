@@ -8,6 +8,11 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <h3>1.1</h3>
+        <ul>
+          <li>Added notification.</li>
+          <li>Implemented action that copies the build number to clipboard.</li>
+        </ul>
         <h3>1.0</h3>
         <ul>
           <li>Added a status bar widget.</li>
@@ -24,4 +29,10 @@
                                 order="after writeActionWidget"/>
     </extensions>
 
+    <actions>
+        <action id="me.artspb.idea.build.number.plugin.BuildNumberCopyToClipboardAction"
+                class="me.artspb.idea.build.number.plugin.BuildNumberCopyToClipboardAction"
+                text="Copy Build Number to Clipboard"
+                description="Copies the build number to clipboard."/>
+    </actions>
 </idea-plugin>

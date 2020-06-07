@@ -1,10 +1,5 @@
 package me.artspb.idea.build.number.plugin
 
-import com.intellij.notification.NotificationGroup
-import com.intellij.notification.NotificationType
-import com.intellij.notification.Notifications
-import com.intellij.openapi.application.ApplicationInfo
-import com.intellij.openapi.ide.CopyPasteManager
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.wm.CustomStatusBarWidget
 import com.intellij.openapi.wm.StatusBar
@@ -13,7 +8,6 @@ import com.intellij.openapi.wm.StatusBarWidgetFactory
 import com.intellij.openapi.wm.impl.status.TextPanel
 import com.intellij.ui.ClickListener
 import org.jetbrains.annotations.Nls
-import java.awt.datatransfer.StringSelection
 import java.awt.event.MouseEvent
 import javax.swing.JComponent
 
@@ -21,7 +15,6 @@ class BuildNumberStatusWidgetFactory : StatusBarWidgetFactory {
 
     companion object {
         private const val ID = "BuildNumber"
-        private val notificationGroup = NotificationGroup.balloonGroup("BuildNumberPluginNotification")
     }
 
     override fun getId(): String = ID
@@ -39,15 +32,10 @@ class BuildNumberStatusWidgetFactory : StatusBarWidgetFactory {
 
     private class BuildNumberStatusWidget : TextPanel(), CustomStatusBarWidget {
 
-        companion object {
-            private val buildNumber = ApplicationInfo.getInstance().build.toString()
-        }
-
         init {
             object : ClickListener() {
                 override fun onClick(event: MouseEvent, clickCount: Int): Boolean {
-                    CopyPasteManager.getInstance().setContents(StringSelection(buildNumber))
-                    createAndShowNotification()
+                    BuildNumber.copyToClipboard()
                     return true
                 }
             }.installOn(this, true)
@@ -56,17 +44,11 @@ class BuildNumberStatusWidgetFactory : StatusBarWidgetFactory {
         override fun ID(): String = ID
 
         override fun install(statusBar: StatusBar) {
-            text = buildNumber
+            text = BuildNumber.toString()
         }
 
         override fun getComponent(): JComponent = this
 
         override fun dispose() {}
-
-        private fun createAndShowNotification() {
-            Notifications.Bus.notify(notificationGroup.createNotification("Build Number Copied",
-                    "Build number was copied to clipboard",
-                    NotificationType.INFORMATION))
-        }
     }
 }
