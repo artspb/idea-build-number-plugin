@@ -12,6 +12,7 @@
         <ul>
           <li>Added notification.</li>
           <li>Implemented action that copies the build number to clipboard.</li>
+          <li>Implemented action that copies the about info to clipboard.</li>
         </ul>
         <h3>1.0</h3>
         <ul>
@@ -34,5 +35,9 @@
                 class="me.artspb.idea.build.number.plugin.BuildNumberCopyToClipboardAction"
                 text="Copy Build Number to Clipboard"
                 description="Copies the build number to clipboard."/>
+        <action id="me.artspb.idea.build.number.plugin.BuildNumberCopyAboutInfoToClipboard"
+                class="me.artspb.idea.build.number.plugin.BuildNumberCopyAboutInfoToClipboard"
+                text="Copy About Info to Clipboard"
+                description="Copies the about info to clipboard."/>
     </actions>
 </idea-plugin>
