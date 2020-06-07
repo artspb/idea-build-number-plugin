@@ -1,6 +1,8 @@
 package me.artspb.idea.build.number.plugin
 
-import com.intellij.notification.*
+import com.intellij.notification.NotificationGroup
+import com.intellij.notification.NotificationType
+import com.intellij.notification.Notifications
 import com.intellij.openapi.application.ApplicationInfo
 import com.intellij.openapi.ide.CopyPasteManager
 import com.intellij.openapi.project.Project
@@ -19,6 +21,7 @@ class BuildNumberStatusWidgetFactory : StatusBarWidgetFactory {
 
     companion object {
         private const val ID = "BuildNumber"
+        private val notificationGroup = NotificationGroup.balloonGroup("BuildNumberPluginNotification")
     }
 
     override fun getId(): String = ID
@@ -61,10 +64,7 @@ class BuildNumberStatusWidgetFactory : StatusBarWidgetFactory {
         override fun dispose() {}
 
         private fun createAndShowNotification() {
-            val notificationGroup = NotificationGroup("BuildNumberPluginNotification",
-                    NotificationDisplayType.BALLOON)
-            Notifications.Bus.notify(Notification(notificationGroup.displayId,
-                    "Build Number Copied",
+            Notifications.Bus.notify(notificationGroup.createNotification("Build Number Copied",
                     "Build number was copied to clipboard",
                     NotificationType.INFORMATION))
         }
