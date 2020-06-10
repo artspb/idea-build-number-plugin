@@ -36,6 +36,6 @@ intellij {
 }
 
 tasks.withType<PatchPluginXmlTask> {
-    sinceBuild("201.6251.9")
+    sinceBuild("201.7223.18")
     untilBuild("202.*")
 }

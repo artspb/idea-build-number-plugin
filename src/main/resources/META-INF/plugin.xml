@@ -20,7 +20,7 @@
         </ul>
     ]]></change-notes>
 
-    <idea-version since-build="201.6251.9"/>
+    <idea-version since-build="201.7223.18"/>
 
     <depends>com.intellij.modules.platform</depends>
 

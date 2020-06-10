@@ -6,7 +6,10 @@ import com.intellij.notification.Notifications
 
 object BuildNumberNotification {
 
-    private val notificationGroup = NotificationGroup.balloonGroup("me.artspb.idea.build.number.plugin.BuildNumberNotification")
+    private val notificationGroup = NotificationGroup.balloonGroup(
+            "me.artspb.idea.build.number.plugin.BuildNumberNotification",
+            "Build Number"
+    )
 
     fun info(title: String, content: String) {
         Notifications.Bus.notify(notificationGroup.createNotification(title, content, NotificationType.INFORMATION))
