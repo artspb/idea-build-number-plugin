@@ -9,7 +9,7 @@ buildscript {
 }
 
 group = "me.artspb.idea.build.number.plugin"
-version = "1.1"
+version = "1.2"
 
 val ideaVersion: String by extra
 val pluginRepositoryToken: String by extra
@@ -37,5 +37,5 @@ intellij {
 
 tasks.withType<PatchPluginXmlTask> {
     sinceBuild("201.7223.18")
-    untilBuild("202.*")
+    untilBuild("203.*")
 }
