@@ -4,7 +4,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 buildscript {
     repositories {
         maven("https://cache-redirector.jetbrains.com/plugins.gradle.org/m2")
-        maven("https://cache-redirector.jetbrains.com/jetbrains.bintray.com/intellij-plugin-service")
     }
 }
 
@@ -16,7 +15,7 @@ val pluginRepositoryToken: String by extra
 
 plugins {
     kotlin("jvm") version "1.5.10"
-    id("org.jetbrains.intellij") version "0.4.21"
+    id("org.jetbrains.intellij") version "1.4.0"
 }
 
 repositories {
@@ -32,10 +31,10 @@ tasks.withType<KotlinCompile> {
 }
 
 intellij {
-    version = ideaVersion
+    version.set(ideaVersion)
 }
 
 tasks.withType<PatchPluginXmlTask> {
-    sinceBuild("221.8")
-    untilBuild("221.*")
+    sinceBuild.set("221.8")
+    untilBuild.set("221.*")
 }
