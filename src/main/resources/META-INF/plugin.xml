@@ -8,6 +8,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <h3>1.9</h3>
+        <ul>
+          <li>2023.1 compatibility.</li>
+        </ul>
         <h3>1.8</h3>
         <ul>
           <li>2022.3 compatibility.</li>
@@ -47,8 +51,6 @@
           <li>Added a status bar widget.</li>
         </ul>
     ]]></change-notes>
-
-    <idea-version since-build="201.7223.58"/>
 
     <depends>com.intellij.modules.platform</depends>
 

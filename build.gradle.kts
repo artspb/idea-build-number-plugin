@@ -8,14 +8,14 @@ buildscript {
 }
 
 group = "me.artspb.idea.build.number.plugin"
-version = "1.8"
+version = "1.9"
 
 val ideaVersion: String by extra
 val pluginRepositoryToken: String by extra
 
 plugins {
-    kotlin("jvm") version "1.6.21"
-    id("org.jetbrains.intellij") version "1.6.0"
+    kotlin("jvm") version "1.7.10"
+    id("org.jetbrains.intellij") version "1.10.0-SNAPSHOT"
 }
 
 repositories {
@@ -26,8 +26,13 @@ dependencies {
     compileOnly(kotlin("stdlib-jdk8"))
 }
 
+configure<JavaPluginExtension> {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "17"
 }
 
 intellij {
@@ -35,6 +40,6 @@ intellij {
 }
 
 tasks.withType<PatchPluginXmlTask> {
-    sinceBuild.set("223.5")
-    untilBuild.set("223.*")
+    sinceBuild.set("231.23")
+    untilBuild.set("231.*")
 }
