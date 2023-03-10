@@ -8,7 +8,7 @@ buildscript {
 }
 
 group = "me.artspb.idea.build.number.plugin"
-version = "1.10.1"
+version = "1.10.2"
 
 val ideaVersion: String by extra
 val pluginRepositoryToken: String by extra
