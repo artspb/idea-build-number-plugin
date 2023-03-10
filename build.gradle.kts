@@ -8,14 +8,14 @@ buildscript {
 }
 
 group = "me.artspb.idea.build.number.plugin"
-version = "1.10"
+version = "1.10.1"
 
 val ideaVersion: String by extra
 val pluginRepositoryToken: String by extra
 
 plugins {
     kotlin("jvm") version "1.8.10"
-    id("org.jetbrains.intellij") version "1.13.1-SNAPSHOT"
+    id("org.jetbrains.intellij") version "1.13.2"
 }
 
 repositories {
