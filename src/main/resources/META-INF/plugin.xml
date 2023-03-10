@@ -8,6 +8,10 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <h3>1.9.1</h3>
+        <ul>
+          <li>Place widget before Memory Indicator.</li>
+        </ul>
         <h3>1.9</h3>
         <ul>
           <li>2023.1 compatibility.</li>
@@ -57,7 +61,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <statusBarWidgetFactory id="buildNumberWidget"
                                 implementation="me.artspb.idea.build.number.plugin.BuildNumberStatusWidgetFactory"
-                                order="after writeActionWidget"/>
+                                order="before Memory"/>
     </extensions>
 
     <actions>
