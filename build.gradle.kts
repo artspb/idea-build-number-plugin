@@ -1,4 +1,5 @@
-import org.jetbrains.intellij.tasks.PatchPluginXmlTask
+import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+import org.jetbrains.intellij.platform.gradle.tasks.PatchPluginXmlTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
@@ -15,15 +16,28 @@ val pluginRepositoryToken: String by extra
 
 plugins {
     kotlin("jvm") version "1.8.10"
-    id("org.jetbrains.intellij") version "1.17.1"
+    id("org.jetbrains.intellij.platform") version "2.0.0-beta8"
 }
 
 repositories {
     maven("https://cache-redirector.jetbrains.com/jcenter.bintray.com")
+    intellijPlatform {
+        defaultRepositories()
+        jetbrainsRuntime()
+        nightly()
+    }
 }
 
 dependencies {
-    compileOnly(kotlin("stdlib-jdk8"))
+    intellijPlatform {
+        intellijIdeaCommunity(ideaVersion)
+        jetbrainsRuntime()
+        instrumentationTools()
+
+        testFramework(TestFrameworkType.Bundled)
+    }
+
+    testImplementation("org.opentest4j:opentest4j:1.3.0")
 }
 
 configure<JavaPluginExtension> {
@@ -33,10 +47,6 @@ configure<JavaPluginExtension> {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "17"
-}
-
-intellij {
-    version.set(ideaVersion)
 }
 
 tasks.withType<PatchPluginXmlTask> {
