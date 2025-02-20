@@ -1,5 +1,7 @@
+import org.jetbrains.intellij.platform.gradle.Constants
 import org.jetbrains.intellij.platform.gradle.TestFrameworkType
 import org.jetbrains.intellij.platform.gradle.tasks.PatchPluginXmlTask
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
@@ -9,14 +11,13 @@ buildscript {
 }
 
 group = "me.artspb.idea.build.number.plugin"
-version = "1.15"
+version = "1.16"
 
 val ideaVersion: String by extra
-val pluginRepositoryToken: String by extra
 
 plugins {
     kotlin("jvm") version "2.1.0"
-    id("org.jetbrains.intellij.platform") version "2.0.0-beta8"
+    id("org.jetbrains.intellij.platform") version "2.2.1"
 }
 
 repositories {
@@ -30,10 +31,8 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaCommunity(ideaVersion)
-        jetbrainsRuntime()
-        instrumentationTools()
-
+        intellijIdeaCommunity(ideaVersion, useInstaller = false)
+        javaCompiler(Constants.Constraints.PLATFORM_VERSION)
         testFramework(TestFrameworkType.Bundled)
     }
 
@@ -41,15 +40,15 @@ dependencies {
 }
 
 configure<JavaPluginExtension> {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "17"
+    compilerOptions.jvmTarget.set(JvmTarget.JVM_21)
 }
 
 tasks.withType<PatchPluginXmlTask> {
-    sinceBuild.set("251.9002")
-    untilBuild.set("251.*")
+    sinceBuild.set("252.6")
+    untilBuild.set("252.*")
 }
