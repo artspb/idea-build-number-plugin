@@ -11,7 +11,7 @@ buildscript {
 }
 
 group = "me.artspb.idea.build.number.plugin"
-version = "1.16"
+version = "1.17"
 
 val ideaVersion: String by extra
 
@@ -49,6 +49,6 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<PatchPluginXmlTask> {
-    sinceBuild.set("252.6")
-    untilBuild.set("252.*")
+    sinceBuild.set("253.6553")
+    untilBuild.set("253.*")
 }
