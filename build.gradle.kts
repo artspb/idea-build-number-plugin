@@ -50,5 +50,5 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<PatchPluginXmlTask> {
     sinceBuild.set("253.6553")
-    untilBuild.set("253.*")
+    untilBuild.set("261.*")
 }
