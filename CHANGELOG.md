@@ -3,6 +3,9 @@
 ## [Unreleased]
 ### Added
 
+## [1.18.0]
+- 2026.1 compatibility.
+
 ## [1.17.0]
 - 2025.3 compatibility.
 
