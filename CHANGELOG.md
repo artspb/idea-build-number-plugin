@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [1.19.0]
+
+- 2026.3 compatibility.
+
 ## [1.18.0]
 
 - 2026.1 compatibility.
